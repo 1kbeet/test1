@@ -1,4 +1,7 @@
-from shroomdk import ShroomDK
+from shroomdk import ShroomDK 
+import streamlit as st
+import pandas as pd
+st.write("NFTx $PUNK Price")
 
 # Initialize `ShroomDK` with your API Key
 sdk = ShroomDK("2e0ffe43-5cdc-49f9-9d6c-34c07ca25182")
@@ -36,7 +39,9 @@ select * from punkout order by block_timestamp desc ;
 # Run the query against Flipside's query engine 
 # and await the results
 query_result_set = sdk.query(sql)
-
+df = pd.DataFrame(query_result_set.records)
+st.write(df)
+st.line_chart(data=df, x="block_timestamp", y="weth_per_punk", width=0, height=0, use_container_width=True)
 # Iterate over the results
 for record in query_result_set.records:
     block_timestamp = record['block_timestamp']

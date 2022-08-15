@@ -4,7 +4,7 @@ import pandas as pd
 st.write("NFTx $PUNK Price")
 
 # Initialize `ShroomDK` with your API Key
-sdk = ShroomDK("2e0ffe43-5cdc-49f9-9d6c-34c07ca25182")
+sdk = ShroomDK(st.secrets["FLIPSIDE_API_KEY"])
 
 # Parameters can be passed into SQL statements 
 # via native string interpolation
